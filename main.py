@@ -11,7 +11,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Variables d’environnement
-TOKEN = os.getenv("7440786076:AAEU6twrOXsZ0qKiOjiedAL-59Rube2K4Ek")
+import os  
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")  
+if not TOKEN:  
+    raise ValueError("Le token Telegram est manquant. Vérifie les variables d'environnement.")  
 ENTREPRISES = ["BNP Paribas", "Total", "Crédit Agricole", "Amazon", "AXA", "Canal+", "FDJ", "Enedis", 
                "CNP Assurances", "SNCF", "Club Med", "Lacoste", "RATP", "Vinci", "Nestlé", "Danone", 
                "Coca-Cola", "Disney", "Ubisoft", "Warner Bros", "Universal Studios", "Caisse d'Épargne", "Groupama"]
